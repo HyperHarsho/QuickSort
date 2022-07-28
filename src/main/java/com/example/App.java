@@ -63,68 +63,68 @@ class App {
         return arr;
     }
 
-    public static void base() {
-        for (int i = 1; i <= 999; i++) {
+    public static void base(int size) {
+        for (int i = 1; i <= size; i++) {
             loop = 0;
             int arr[] = randomArray(i + 1);
             quickSort(arr, i, 0);
             data1.put(i, loop);
         }
-        for (int i = 1; i <= 999; i++) {
+        for (int i = 1; i <= size; i++) {
             loop = 0;
             int arr[] = randomArray(i + 1);
             quickSort(arr, i, 0);
             data2.put(i, loop);
         }
-        for (int i = 1; i <= 999; i++) {
+        for (int i = 1; i <= size; i++) {
             loop = 0;
             int arr[] = randomArray(i + 1);
             quickSort(arr, i, 0);
             data3.put(i, loop);
         }
-        for (int i = 1; i <= 999; i++) {
+        for (int i = 1; i <= size; i++) {
             loop = 0;
             int arr[] = randomArray(i + 1);
             quickSort(arr, i, 0);
             data4.put(i, loop);
         }
-        for (int i = 1; i <= 999; i++) {
+        for (int i = 1; i <= size; i++) {
             loop = 0;
             int arr[] = randomArray(i + 1);
             quickSort(arr, i, 0);
             data5.put(i, loop);
         }
-        for (int i = 1; i <= 999; i++) {
+        for (int i = 1; i <= size; i++) {
             loop = 0;
             int arr[] = randomArray(i + 1);
             quickSort(arr, i, 0);
             data6.put(i, loop);
         }
-        for (int i = 1; i <= 999; i++) {
+        for (int i = 1; i <= size; i++) {
             loop = 0;
             int arr[] = randomArray(i + 1);
             quickSort(arr, i, 0);
             data7.put(i, loop);
         }
-        for (int i = 1; i <= 999; i++) {
+        for (int i = 1; i <= size; i++) {
             loop = 0;
             int arr[] = randomArray(i + 1);
             quickSort(arr, i, 0);
             data8.put(i, loop);
         }
-        for (int i = 1; i <= 999; i++) {
+        for (int i = 1; i <= size; i++) {
             loop = 0;
             int arr[] = randomArray(i + 1);
             quickSort(arr, i, 0);
             data9.put(i, loop);
         }
-        for (int i = 1; i <= 999; i++) {
+        for (int i = 1; i <= size; i++) {
             loop = 0;
             int arr[] = randomArray(i + 1);
             quickSort(arr, i, 0);
             data10.put(i, loop);
         }
-        for (int i = 1; i <= 999; i++) {
+        for (int i = 1; i <= size; i++) {
             int avg = 0;
             avg += data1.get(i);
             avg += data2.get(i);
@@ -146,7 +146,7 @@ class App {
     }
 
     public static void main(String[] args) {
-        base();
+        base(50);
         DataChart.Chart();
     }
 }
