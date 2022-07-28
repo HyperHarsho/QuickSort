@@ -1,4 +1,4 @@
-package com.example;
+package com.hype;
 
 import java.util.Map;
 
