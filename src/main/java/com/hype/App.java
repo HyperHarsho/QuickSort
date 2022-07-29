@@ -7,23 +7,15 @@ import java.util.Random;
 class App {
     public static int loop = 0;
     public static Map<Integer, Integer> data = new HashMap<>();
-    public static Map<Integer, Integer> data1 = new HashMap<>();
-    public static Map<Integer, Integer> data2 = new HashMap<>();
-    public static Map<Integer, Integer> data3 = new HashMap<>();
-    public static Map<Integer, Integer> data4 = new HashMap<>();
-    public static Map<Integer, Integer> data5 = new HashMap<>();
-    public static Map<Integer, Integer> data6 = new HashMap<>();
-    public static Map<Integer, Integer> data7 = new HashMap<>();
-    public static Map<Integer, Integer> data8 = new HashMap<>();
-    public static Map<Integer, Integer> data9 = new HashMap<>();
-    public static Map<Integer, Integer> data10 = new HashMap<>();
 
+    // Swapping two elements
     public static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
     }
 
+    // Sorts by creating partition
     public static int partition(int arr[], int high, int low) {
         int p = arr[high];
         int i = low - 1;
@@ -37,6 +29,7 @@ class App {
         return i + 1;
     }
 
+    // Sorts the array
     public static void quickSort(int arr[], int high, int low) {
         if (low < high) {
             loop++;
@@ -47,6 +40,7 @@ class App {
         }
     }
 
+    // Print the array
     public static void printArray(int[] arr, int size) {
         for (int i = 0; i < size; i++)
             System.out.print(arr[i] + " ");
@@ -54,89 +48,38 @@ class App {
         System.out.println();
     }
 
+    // Generates a random array of size
     public static int[] randomArray(int size) {
         int[] arr = new int[size];
         for (int i = 0; i < size; i++) {
             Random rand = new Random();
-            arr[i] = rand.nextInt(999999999);
+            arr[i] = rand.nextInt(size);
         }
         return arr;
     }
 
-    public static void base(int size) {
+    // Creates a map of length of array(size) and average(set) of number of loop
+    // it took to sort a random array each time
+    public static void dataMap(int size, int set) {
+        int times = 0;
+        int avg = 0;
+        int arr[];
         for (int i = 1; i <= size; i++) {
-            loop = 0;
-            int arr[] = randomArray(i + 1);
-            quickSort(arr, i, 0);
-            data1.put(i, loop);
+            data.put(i, avg);
+        }
+        for (int i = 1; i <= set; i++) {
+            for (int j = 1; j <= size; j++) {
+                loop = 0;
+                arr = randomArray(j + 1);
+                quickSort(arr, j, 0);
+                avg = (data.get(j) + loop);
+                data.put(j, avg);
+                times++;
+                System.out.println(times);
+            }
         }
         for (int i = 1; i <= size; i++) {
-            loop = 0;
-            int arr[] = randomArray(i + 1);
-            quickSort(arr, i, 0);
-            data2.put(i, loop);
-        }
-        for (int i = 1; i <= size; i++) {
-            loop = 0;
-            int arr[] = randomArray(i + 1);
-            quickSort(arr, i, 0);
-            data3.put(i, loop);
-        }
-        for (int i = 1; i <= size; i++) {
-            loop = 0;
-            int arr[] = randomArray(i + 1);
-            quickSort(arr, i, 0);
-            data4.put(i, loop);
-        }
-        for (int i = 1; i <= size; i++) {
-            loop = 0;
-            int arr[] = randomArray(i + 1);
-            quickSort(arr, i, 0);
-            data5.put(i, loop);
-        }
-        for (int i = 1; i <= size; i++) {
-            loop = 0;
-            int arr[] = randomArray(i + 1);
-            quickSort(arr, i, 0);
-            data6.put(i, loop);
-        }
-        for (int i = 1; i <= size; i++) {
-            loop = 0;
-            int arr[] = randomArray(i + 1);
-            quickSort(arr, i, 0);
-            data7.put(i, loop);
-        }
-        for (int i = 1; i <= size; i++) {
-            loop = 0;
-            int arr[] = randomArray(i + 1);
-            quickSort(arr, i, 0);
-            data8.put(i, loop);
-        }
-        for (int i = 1; i <= size; i++) {
-            loop = 0;
-            int arr[] = randomArray(i + 1);
-            quickSort(arr, i, 0);
-            data9.put(i, loop);
-        }
-        for (int i = 1; i <= size; i++) {
-            loop = 0;
-            int arr[] = randomArray(i + 1);
-            quickSort(arr, i, 0);
-            data10.put(i, loop);
-        }
-        for (int i = 1; i <= size; i++) {
-            int avg = 0;
-            avg += data1.get(i);
-            avg += data2.get(i);
-            avg += data3.get(i);
-            avg += data4.get(i);
-            avg += data5.get(i);
-            avg += data6.get(i);
-            avg += data7.get(i);
-            avg += data8.get(i);
-            avg += data9.get(i);
-            avg += data10.get(i);
-            avg = (int) avg / 10;
+            avg = (int)Math.ceil(data.get(i) / set);
             data.put(i, avg);
         }
         System.out.println("Length \t Loops");
@@ -146,7 +89,7 @@ class App {
     }
 
     public static void main(String[] args) {
-        base(50);
+        dataMap(1000, 10);
         DataChart.Chart();
     }
 }
