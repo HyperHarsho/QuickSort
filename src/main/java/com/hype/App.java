@@ -3,10 +3,12 @@ package com.hype;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.Scanner;
 
 class App {
     public static int loop = 0;
     public static Map<Integer, Integer> data = new HashMap<>();
+    public static long start,end,diff=0;
 
     // Swapping two elements
     public static void swap(int[] arr, int i, int j) {
@@ -61,7 +63,6 @@ class App {
     // Creates a map of length of array(size) and average(set) of number of loop
     // it took to sort a random array each time
     public static void dataMap(int size, int set) {
-        int times = 0;
         int avg = 0;
         int arr[];
         for (int i = 1; i <= size; i++) {
@@ -71,25 +72,32 @@ class App {
             for (int j = 1; j <= size; j++) {
                 loop = 0;
                 arr = randomArray(j + 1);
+                start = System.currentTimeMillis();
                 quickSort(arr, j, 0);
+                end = System.currentTimeMillis();
+                diff+=end-start;
                 avg = (data.get(j) + loop);
                 data.put(j, avg);
-                times++;
-                System.out.println(times);
             }
         }
         for (int i = 1; i <= size; i++) {
             avg = (int)Math.ceil(data.get(i) / set);
             data.put(i, avg);
         }
-        System.out.println("Length \t Loops");
-        for (Map.Entry<Integer, Integer> m : data.entrySet()) {
-            System.out.println(m.getKey() + " \t " + m.getValue());
-        }
     }
 
     public static void main(String[] args) {
-        dataMap(1000, 10);
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the size of the array to sort");
+        int size = in.nextInt();
+        System.out.println("Enter the number of times to sort");
+        int set = in.nextInt();
+        for(int i = 1; i<=set;i++) {
+            diff = 0;
+            dataMap(size, i);
+            System.out.println(diff+" milliseconds to sort "+size*i+" array");
+        }
         DataChart.Chart();
+        in.close();
     }
 }
