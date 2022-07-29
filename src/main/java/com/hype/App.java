@@ -21,7 +21,7 @@ class App {
     public static int partition(int arr[], int high, int low) {
         int p = arr[high];
         int i = low - 1;
-        for (int j = low; j <= high - 1; j++) {
+        for (int j = low; j < high; j++) {
             if (arr[j] < p) {
                 i++;
                 swap(arr, i, j);
@@ -95,7 +95,7 @@ class App {
         for(int i = 1; i<=set;i++) {
             diff = 0;
             dataMap(size, i);
-            System.out.println(diff+" milliseconds to sort "+size*i+" array");
+            System.out.println(diff+" milliseconds to sort "+size*i+" array of size "+size);
         }
         DataChart.Chart();
         in.close();
